@@ -1,0 +1,49 @@
+/* Minimal widget stylesheet - uses Tailwind utility classes where possible.
+   Additional classes here to avoid inline styles in JS and provide customizability. */
+
+.chat-widget-bubble {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999999;
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.chat-widget-window {
+  position: fixed;
+  right: 24px;
+  bottom: 100px;
+  width: 360px;
+  max-width: calc(100% - 48px);
+  z-index: 999998;
+  display: none;
+}
+
+/* Simple typing dot animation */
+.chat-typing-dots span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 4px;
+  background: #cbd5e1;
+  border-radius: 9999px;
+  animation: bounce 1s infinite;
+}
+.chat-typing-dots span:nth-child(2){ animation-delay: 0.15s; }
+.chat-typing-dots span:nth-child(3){ animation-delay: 0.3s; }
+@keyframes bounce{
+  0%{ transform: translateY(0); opacity: 0.6;}
+  50%{ transform: translateY(-6px); opacity: 1;}
+  100%{ transform: translateY(0); opacity: 0.6;}
+}
+
+/* tiny scrollbar styles for chat history */
+.chat-history::-webkit-scrollbar{ width: 8px; }
+.chat-history::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.15); border-radius: 9999px; }

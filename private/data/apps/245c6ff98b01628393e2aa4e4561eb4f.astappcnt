@@ -1,0 +1,95 @@
+APP {
+  id: "245c6ff98b01628393e2aa4e4561eb4f";
+  name: "Minnesota Nice Customer Service Application";
+  description: "We are a game that expects all customer service agents to live up to the expectation of the Minnesota Nice narrative. We are looking for the best of the best intelligent and Minnesota Nice customer service agents around.";
+  group_id: 123456;
+  target_role: "groups/123456/roles/123";
+  pass_score: 70;
+}
+
+STYLE {
+  primary_color: "#4caf50";
+  secondary_color: "#cddc39";
+}
+
+QUESTION "q1678456789" TYPE "short_answer" {
+  text: "What is your favorite Minnesota Nice saying?";
+  points: 20;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1678456790" TYPE "short_answer" {
+  text: "Have you ever had to deal with an angry customer? If so, how did you handle it?";
+  points: 15;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1678456791" TYPE "short_answer" {
+  text: "What is your favorite food from Minnesota?";
+  points: 10;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1678456792" TYPE "multiple_choice" {
+  text: "Which of the following Minnesota Nice traits do you possess?";
+  points: 15;
+  options: [
+    {id:"opt0", text:"Politeness", correct:true},
+    {id:"opt1", text:"Patience", correct:false},
+    {id:"opt2", text:"Kindness", correct:false},
+    {id:"opt3", text:"Humor", correct:true},
+  ];
+}
+
+QUESTION "q1678456793" TYPE "short_answer" {
+  text: "Have you ever volunteered in your community? If so, where and for how long?";
+  points: 20;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1678456794" TYPE "short_answer" {
+  text: "What is your favorite Minnesota Nice movie?";
+  points: 10;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1678456795" TYPE "multiple_choice" {
+  text: "If a customer asks for a refund, what is your response?";
+  points: 15;
+  options: [
+    {id:"opt0", text:"I'll apologize and offer a replacement.", correct:true},
+    {id:"opt1", text:"I'll ask them to explain the issue in detail.", correct:false},
+    {id:"opt2", text:"I'll ask them to return the product for a refund.", correct:false},
+    {id:"opt3", text:"I'll tell them to contact the manufacturer directly.", correct:false},
+  ];
+}
+
+QUESTION "q1678456796" TYPE "short_answer" {
+  text: "What is your favorite Minnesota Nice activity?";
+  points: 10;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1678456797" TYPE "multiple_choice" {
+  text: "If a customer complains about a product, what is your response?";
+  points: 15;
+  options: [
+    {id:"opt0", text:"I'll apologize and offer a replacement.", correct:true},
+    {id:"opt1", text:"I'll ask them to explain the issue in detail.", correct:false},
+    {id:"opt2", text:"I'll tell them to contact the manufacturer directly.", correct:false},
+    {id:"opt3", text:"I'll offer them a discount instead.", correct:false},
+  ];
+}
+
+QUESTION "q1678456798" TYPE "short_answer" {
+  text: "Have you ever had to deal with a difficult coworker? If so, how did you handle it?";
+  points: 15;
+  options: [];
+  max_length: 300;
+}

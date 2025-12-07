@@ -1,0 +1,445 @@
+/* assets/css/style.css
+   Light, fresh design for Application Center + Polaris Pilot widget.
+   Updated:
+   - Modal / dialog styling (single modal visible at a time)
+   - Modal content, header, actions, option-row styles
+   - Color hex inputs and swatches enhanced and synced visually (CSS only)
+   - Toasts polished
+   - Minor accessibility and focus improvements
+   - Keeps previous widget/chat styles intact
+*/
+
+/* --- Design tokens (light-first) --- */
+:root{
+  --bg-page: #fbfdff;
+  --bg-card: #ffffff;
+  --bg-muted: #f5f8fb;
+  --text-strong: #0b1220;
+  --text-muted: #64748b;
+  --text-soft: #3b4a5a;
+
+  --accent-1: #ff6b6b;
+  --accent-2: #5b6cff;
+  --accent-3: #16c79a;
+  --muted-border: rgba(15,23,42,0.06);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+
+  --widget-collapsed-w: 64px;
+  --widget-open-w: 460px;
+  --widget-open-h: 92vh;
+  --widget-min-w: 360px;
+
+  --shadow-soft: 0 6px 20px rgba(16,24,40,0.06);
+  --shadow-strong: 0 18px 60px rgba(16,24,40,0.08);
+  --muted-bg-overlay: rgba(15,23,42,0.03);
+  --focus-ring: rgba(91,108,255,0.08);
+}
+
+/* Dark theme (optional) */
+[data-theme="dark"]{
+  --bg-page:#071025;
+  --bg-card:#071428;
+  --text-strong:#e6eef8;
+  --text-muted:#9fb0d1;
+  --muted-border: rgba(255,255,255,0.04);
+  --muted-bg-overlay: rgba(255,255,255,0.02);
+}
+
+/* --- Reset & base --- */
+*{box-sizing:border-box}
+:where(html,body){height:100%}
+html,body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background:var(--bg-page);
+  color:var(--text-strong);
+  line-height:1.5;
+  font-size:15px;
+}
+
+/* Utilities */
+.container{max-width:1400px;margin:0 auto;padding:0 24px}
+.mt-lg{margin-top:var(--gap-md)}
+.mb-0{margin-bottom:0}
+.text-muted{color:var(--text-muted);font-size:0.95rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hidden{display:none !important}
+
+/* Focus */
+:focus{outline:none}
+button:focus,input:focus,textarea:focus{
+  box-shadow:0 0 0 5px var(--focus-ring);
+  border-radius:8px;
+}
+
+/* --- Header --- */
+.header{
+  position:sticky;top:0;z-index:1100;
+  background: rgba(255,255,255,0.90);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(25,35,48,0.04);
+}
+.header-content{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{
+  font-weight:800;display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  -webkit-background-clip:text;color:transparent;font-size:1.05rem;
+}
+
+/* --- Buttons --- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:700;font-size:0.95rem;background:transparent;color:var(--text-strong)
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  color:#fff;
+  box-shadow:var(--shadow-strong);
+}
+.btn-secondary{
+  background:var(--bg-card);
+  border:1px solid var(--muted-border);
+  color:var(--text-strong);
+}
+.btn-ghost{background:transparent;color:var(--text-muted)}
+.icon-btn{background:transparent;border:none;padding:6px 8px;border-radius:10px;cursor:pointer}
+.icon-btn:hover{background:var(--muted-bg-overlay)}
+
+/* --- Layout: main grid --- */
+.main-layout{
+  display:grid;
+  grid-template-columns:300px 1fr 360px;
+  gap:32px;padding:32px 0;min-height:calc(100vh - 140px);
+}
+@media (max-width:1100px){
+  .main-layout{grid-template-columns:1fr}
+  .sidebar,.preview-panel{display:none}
+}
+
+/* --- Glass card --- */
+.glass-card{
+  background:var(--bg-card);
+  border-radius:12px;padding:20px;border:1px solid var(--muted-border);
+  box-shadow:var(--shadow-soft);
+}
+
+/* --- Sidebar --- */
+.sidebar-title{font-size:1.05rem;margin:0 0 8px 0;color:var(--text-muted)}
+.sidebar-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.sidebar-item{
+  display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;cursor:pointer;background:linear-gradient(180deg,#fff,#fbfdff);
+  border:1px solid var(--muted-border);transition:transform .12s ease,box-shadow .12s ease;
+}
+.sidebar-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft)}
+
+/* --- Form group --- */
+.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;width:100%}
+.form-label{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--text-muted);font-size:0.95rem}
+.form-label .required{color:var(--accent-1);font-size:0.9rem;margin-left:4px;font-weight:800}
+.form-help{font-size:0.86rem;color:var(--text-muted);margin-top:4px}
+
+/* Inputs / Textareas */
+.form-input, .form-textarea{
+  display:block;width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--muted-border);background:linear-gradient(180deg,#fff,#fbfdff);color:var(--text-strong);
+  font-size:0.95rem;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.form-textarea{min-height:120px;resize:vertical}
+.form-input:focus,.form-textarea:focus{box-shadow:0 0 0 6px var(--focus-ring);border-color:rgba(91,108,255,0.28);outline:none}
+
+/* compact row */
+.form-row{display:flex;gap:.5rem}
+.form-row .form-group{margin-bottom:0}
+
+/* Color field and swatch */
+.color-field{position:relative;display:flex;align-items:center;gap:8px}
+.color-field input[type="color"].color-input{ -webkit-appearance:none;border:none;padding:0;width:44px;height:36px;border-radius:8px;background:transparent;cursor:pointer}
+.color-field input[type="color"].color-input::-webkit-color-swatch-wrapper{padding:0}
+.color-field input[type="color"].color-input::-webkit-color-swatch{border-radius:8px;border:1px solid var(--muted-border)}
+.color-field .color-swatch{width:36px;height:28px;border-radius:8px;border:1px solid var(--muted-border);box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);flex:0 0 auto}
+/* hex input next to color control */
+.color-hex-input{width:96px;padding:8px 10px;border-radius:8px;border:1px solid var(--muted-border);font-family:ui-monospace,Menlo,monospace}
+
+/* Preview */
+.preview-device{background:var(--bg-muted);border-radius:12px;padding:16px;display:flex;flex-direction:column;align-items:stretch;gap:12px;box-sizing:border-box}
+.preview-content{background:var(--bg-card);border-radius:10px;padding:12px;min-height:300px;width:100%;max-width:100%;margin:0 auto;overflow:auto;box-sizing:border-box;word-break:break-word;white-space:normal}
+
+/* Footer */
+footer{padding:2rem 0;text-align:center;color:var(--text-muted);border-top:1px solid var(--muted-border);margin-top:3rem}
+
+/* Toasts */
+#toast-container{position:fixed;right:20px;bottom:24px;z-index:6800;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.toast{
+  display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;min-width:220px;max-width:420px;
+  box-shadow:0 12px 30px rgba(16,24,40,0.08);border:1px solid rgba(0,0,0,0.04);
+  background:linear-gradient(180deg,#fff,#fcfdff);color:var(--text-strong);font-weight:600;
+  transform-origin:right bottom;animation:toast-in .28s cubic-bezier(.2,.9,.25,1);
+}
+@keyframes toast-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.toast.info{border-left:4px solid var(--accent-2)}
+.toast.success{border-left:4px solid var(--accent-3);background:linear-gradient(180deg,#f6fffb,#f2fff7)}
+.toast.error{border-left:4px solid var(--accent-1);background:linear-gradient(180deg,#fff6f6,#fff2f2)}
+.toast .msg{flex:1;font-size:0.95rem}
+.toast .close{background:transparent;border:none;font-size:14px;opacity:0.7;cursor:pointer}
+
+/* --- Polaris widget base --- */
+#polaris-widget{
+  position:fixed;right:20px;bottom:20px;width:var(--widget-collapsed-w);max-width:calc(100% - 40px);z-index:5200;
+  display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:inherit;
+  transition: width .26s cubic-bezier(.2,.9,.25,1), height .26s cubic-bezier(.2,.9,.25,1), right .22s ease;
+}
+#polaris-widget.collapsed{width:auto;height:auto;padding:0;overflow:visible}
+#polaris-widget.collapsed .polaris-panel{display:none}
+
+/* default: left visible by default so edit shows first */
+.polaris-left{display:flex}
+.polaris-right{display:none}
+
+/* open state sizing */
+#polaris-widget.open{width: min(var(--widget-open-w), calc(100% - 40px));height:auto;right:20px}
+
+/* Polaris toggle: grow to fit text label (pill) */
+.polaris-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:10px 16px;
+  min-height:44px;
+  height:auto;
+  width:auto;
+  white-space:nowrap;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,#8dd3ff,#b7f0d9);
+  font-size:15px;
+  font-weight:700;
+  color:var(--text-strong);
+  box-shadow:0 12px 30px rgba(91,108,255,0.10);
+  cursor:pointer;
+  transition:opacity .18s ease, transform .18s ease, box-shadow .12s ease;
+}
+.polaris-toggle > img, .polaris-toggle > svg, .polaris-toggle > .icon{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center}
+.polaris-toggle:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(91,108,255,0.12)}
+.polaris-toggle:active{transform:translateY(0)}
+.polaris-toggle:focus{outline:none;box-shadow:0 0 0 6px var(--focus-ring)}
+#polaris-widget.open .polaris-toggle{opacity:0;transform:scale(.96) translateY(6px);pointer-events:none;visibility:hidden}
+
+/* Panel */
+.polaris-panel{
+  width:100%;height:var(--widget-open-h);border-radius:12px;background:linear-gradient(180deg,var(--bg-card),#fbfdff);
+  box-shadow:var(--shadow-strong);overflow:hidden;visibility:hidden;opacity:0;transform:translateY(10px) scale(.995);
+  transition:opacity .22s ease,transform .22s ease,visibility .22s;display:flex;flex-direction:column;
+  max-height:calc(100vh - 40px);min-width:var(--widget-min-w);box-sizing:border-box;
+}
+#polaris-widget.open .polaris-panel{visibility:visible;opacity:1;transform:translateY(0) scale(1);pointer-events:auto;animation:polaris-open .34s cubic-bezier(.2,.9,.25,1)}
+@keyframes polaris-open{0%{opacity:0;transform:translateY(14px) scale(.992)}60%{opacity:1;transform:translateY(-6px) scale(1.01)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Header */
+.polaris-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(15,23,42,0.04);backdrop-filter:blur(6px);flex:0 0 64px}
+.polaris-avatar{width:44px;height:44px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#fff;font-weight:700;font-size:18px;box-shadow:0 8px 26px rgba(16,24,40,0.06)}
+.polaris-title{font-weight:800;font-size:1rem}
+.polaris-sub{font-size:0.86rem;color:var(--text-muted)}
+.polaris-header-actions{display:flex;align-items:center;gap:8px}
+
+/* Edit Details header button */
+.polaris-edit-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700;font-size:0.92rem;
+  background:linear-gradient(90deg,var(--accent-2),var(--accent-1));color:#fff;box-shadow:0 8px 20px rgba(99,102,241,0.12);
+  transition:transform .12s ease,box-shadow .12s ease,opacity .12s ease;
+}
+.polaris-edit-btn .icon{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;font-size:14px;border-radius:6px;background:rgba(255,255,255,0.06)}
+.polaris-edit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(99,102,241,0.14)}
+.polaris-edit-btn.ghost{background:transparent;color:var(--text-strong);border:1px solid var(--muted-border);box-shadow:none}
+
+/* --- BODY: ensure it fills remaining panel height --- */
+.polaris-body{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding:12px;
+  box-sizing:border-box;
+  height: calc(100% - 64px);
+  min-height:0;
+}
+
+/* Ensure groups can occupy full body height when visible */
+.polaris-left, .polaris-right{box-sizing:border-box;min-height:0}
+
+/* Default wrappers */
+.polaris-left{display:flex;flex-direction:column;gap:10px;height:100%;overflow:visible;padding-right:6px}
+.polaris-right{display:none;flex-direction:column;gap:10px;height:100%;overflow:hidden}
+
+/* Mode handling */
+#polaris-widget.mode-edit .polaris-left{display:flex;flex:1 1 auto;height:100%}
+#polaris-widget.mode-edit .polaris-right{display:none}
+#polaris-widget.mode-chat .polaris-right{display:flex;flex-direction:column;flex:1 1 auto;height:100%}
+#polaris-widget.mode-chat .polaris-left{display:none}
+
+/* Make polaris-left fit without internal scrolling:
+   - tighten spacing
+   - smaller textarea defaults (but resize allowed)
+   - actions compact
+*/
+.polaris-left .form-group{margin-bottom:8px}
+.polaris-left .form-label{font-size:0.92rem}
+.polaris-left .form-input{padding:8px 10px;font-size:0.94rem;border-radius:10px;line-height:1.25}
+.polaris-left .form-textarea{padding:8px 10px;font-size:0.92rem;min-height:64px;max-height:160px;overflow:auto;resize:vertical}
+.polaris-left .polaris-left-actions{display:flex;gap:8px;justify-content:flex-end;padding-top:6px}
+.polaris-left .polaris-left-actions .btn{padding:8px 12px;font-size:0.92rem}
+
+/* --- Chat (right) styles --- */
+.polaris-right{display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.polaris-chat{
+  background: var(--bg-muted);
+  border-radius:12px;padding:12px;overflow:auto;display:flex;flex-direction:column;gap:14px;border:1px solid var(--muted-border);box-shadow:var(--shadow-soft);
+  flex:1 1 auto;min-height:0;
+}
+
+/* Message formatting: wider and more vertical layout */
+.polaris-chat-msg{
+  padding:12px 16px;border-radius:12px;max-width:94%;box-shadow:0 8px 24px rgba(16,24,40,0.04);
+  word-break:break-word;white-space:pre-wrap;font-size:0.98rem;line-height:1.5;position:relative;background:#fff;color:var(--text-strong);
+  display:flex;flex-direction:column;gap:10px;
+}
+.polaris-chat-msg.polaris-chat-bot{background:linear-gradient(180deg,#eef4ff,#fbfdff);align-self:flex-start}
+.polaris-chat-msg.polaris-chat-user{background:linear-gradient(180deg,#eafff3,#f7fffb);align-self:flex-end}
+
+/* Message header / meta */
+.polaris-chat-msg .meta{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:0.86rem;color:var(--text-muted)}
+.polaris-chat-msg .body{font-size:0.98rem;color:var(--text-strong);white-space:pre-wrap}
+
+/* Per-message action controls (Import / Merge / Copy / Show raw) */
+.polaris-chat-msg .polaris-gen-controls{
+  display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;padding-top:8px;border-top:1px solid rgba(15,23,42,0.03);
+}
+.polaris-chat-msg .polaris-gen-controls .btn{padding:8px 12px;border-radius:10px;font-size:0.92rem}
+.polaris-chat-msg .polaris-gen-controls .btn-ghost{background:transparent;border:1px solid var(--muted-border)}
+.polaris-chat-msg .polaris-gen-controls .btn-show-raw{background:transparent;border:1px dashed var(--muted-border);color:var(--text-muted)}
+
+/* Hide global raw preview by default (inline preferred) */
+#polaris-gen-preview{display:none}
+
+/* Typing indicator */
+.polaris-typing{display:inline-flex;gap:6px;align-items:center}
+.polaris-typing .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);opacity:0.9;animation:typing .9s infinite}
+.polaris-typing .dot:nth-child(2){animation-delay:.12s}
+.polaris-typing .dot:nth-child(3){animation-delay:.24s}
+@keyframes typing{0%{transform:translateY(0);opacity:0.35}50%{transform:translateY(-6px);opacity:1}100%{transform:translateY(0);opacity:0.35}}
+
+/* Composer area */
+.polaris-composer{display:flex;flex-direction:column;gap:8px;padding-top:8px;border-top:1px solid rgba(15,23,42,0.03)}
+.polaris-composer-inner{display:flex;gap:8px;align-items:flex-end}
+.polaris-input{width:100%;min-height:72px;padding:12px;border-radius:12px;border:1px solid var(--muted-border);background:var(--bg-card);resize:vertical;box-sizing:border-box;font-size:0.96rem;line-height:1.35}
+.polaris-input:focus{box-shadow:0 0 0 5px var(--focus-ring);border-color:rgba(91,108,255,0.18)}
+.polaris-controls{display:flex;gap:8px;align-items:center;margin-top:4px;flex-wrap:wrap}
+#polaris-send-prompt{white-space:nowrap;padding:10px 14px;border-radius:12px;align-self:flex-end;box-shadow:0 10px 30px rgba(91,108,255,0.08)}
+
+/* --- Modal styles --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8,16,32,0.45);
+  z-index: 7800;
+  padding: 20px;
+}
+
+/* Ensure only the last modal is visible (prevents stacking multiple modals) */
+.modal-overlay:not(:last-of-type) { display: none !important; }
+
+/* Modal panel */
+.modal {
+  width: 100%;
+  max-width: 760px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 30px 90px rgba(16,24,40,0.12);
+  border: 1px solid var(--muted-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modal-in .18s ease;
+}
+
+/* Modal animation */
+@keyframes modal-in {
+  from { transform: translateY(8px) scale(.995); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Modal header */
+.modal-header {
+  padding: 14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(15,23,42,0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+}
+.modal-title { font-weight:800; font-size:1.05rem; }
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+}
+.modal-close:hover { background: var(--muted-bg-overlay); }
+
+/* Modal body */
+.modal-body {
+  padding: 16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  max-height: 70vh;
+  overflow:auto;
+}
+.modal .form-group { margin-bottom: 8px; }
+.modal .form-input, .modal .form-textarea { border-radius: 8px; padding: 8px 10px; border: 1px solid var(--muted-border); }
+
+/* Option rows inside modal */
+.option-row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:8px;
+}
+.option-row .form-input { flex:1; }
+
+/* Modal actions (buttons) */
+.modal-actions {
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+  padding:12px 18px;
+  border-top:1px solid rgba(15,23,42,0.04);
+  background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+}
+
+/* Small helper to visually mark required fields in modal */
+.modal .form-label .required { color: var(--accent-1); margin-left: 6px; }
+
+/* Accessibility: when modal is open, prevent body scroll */
+body.modal-open { overflow: hidden; }
+
+/* --- Responsive tweaks --- */
+@media (max-width:700px){
+  #polaris-widget{right:12px;left:12px;bottom:12px;width:calc(100% - 24px)}
+  #polaris-widget.open .polaris-panel{height:72vh;max-height:72vh;min-width:unset}
+  .polaris-left{max-height:none}
+  .polaris-preview{height:120px}
+  .modal{max-width:92vw}
+}
+
+/* Helpers */
+code{background:rgba(15,23,42,0.03);padding:2px 6px;border-radius:6px;font-size:0.9rem;color:var(--text-strong)}

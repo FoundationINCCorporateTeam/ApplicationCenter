@@ -1,0 +1,5 @@
+# (Optional) If using Apache, protect storage directories
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^storage/ - [F,L]
+</IfModule>

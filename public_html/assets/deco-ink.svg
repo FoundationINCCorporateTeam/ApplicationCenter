@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- decorative ornamental svg for PolarisONE — simple flourish -->
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <defs>
+    <linearGradient id="gA" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffb7e6" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#ffd88a" stop-opacity="0.85" />
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#gA)" stroke-width="2">
+    <path d="M10 150 C 120 20, 320 220, 500 120 S 760 40, 790 60" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <path d="M50 120 C 200 80, 420 180, 680 90" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  </g>
+</svg>

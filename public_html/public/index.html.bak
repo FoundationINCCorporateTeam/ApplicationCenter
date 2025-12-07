@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+  <title>Helpdesk + Live Chat — Demo</title>
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chat widget CSS -->
+  <link rel="stylesheet" href="chat-widget.css" />
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <header class="bg-white shadow">
+    <div class="max-w-4xl mx-auto p-6">
+      <h1 class="text-2xl font-semibold">Helpdesk + Live Chat — Demo</h1>
+      <p class="text-gray-600 mt-1">This demo uses TailwindCSS, Vanilla JS, PHP and JSON file storage. Chat uses long polling (no WebSockets).</p>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6">
+    <section class="bg-white rounded shadow p-6">
+      <h2 class="text-xl font-medium">Getting started</h2>
+      <ol class="list-decimal list-inside mt-4 text-gray-700">
+        <li>Open the chat widget (floating bubble bottom-right).</li>
+        <li>Enter name &amp; email and start chatting.</li>
+        <li>Open the helpdesk (agent) UI at <a class="text-blue-600 underline" href="/helpdesk/dashboard.php">/helpdesk/dashboard.php</a>.</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- Chat widget loader -->
+  <script src="chat-widget.js" defer></script>
+</body>
+</html>

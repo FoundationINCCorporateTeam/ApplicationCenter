@@ -1,0 +1,42 @@
+{
+    "aa621fa9-6e4b-4c5c-baa6-73d3137a41ef": {
+        "id": "aa621fa9-6e4b-4c5c-baa6-73d3137a41ef",
+        "name": "agent-check",
+        "email": "",
+        "created_at": 1763774300,
+        "last_message_at": 1763774300,
+        "status": "open"
+    },
+    "04a574f6-9ba9-463a-855b-e830f93a2120": {
+        "id": "04a574f6-9ba9-463a-855b-e830f93a2120",
+        "name": "agent-check",
+        "email": "",
+        "created_at": 1763774301,
+        "last_message_at": 1763774301,
+        "status": "open"
+    },
+    "c2247cce-ad02-4e63-86fe-8eb8fb4c5b26": {
+        "id": "c2247cce-ad02-4e63-86fe-8eb8fb4c5b26",
+        "name": "agent-check",
+        "email": "",
+        "created_at": 1763774303,
+        "last_message_at": 1763774303,
+        "status": "open"
+    },
+    "924cb25f-66ba-45e6-8b36-65b534e6a4fa": {
+        "id": "924cb25f-66ba-45e6-8b36-65b534e6a4fa",
+        "name": "agent-check",
+        "email": "",
+        "created_at": 1763774304,
+        "last_message_at": 1763774304,
+        "status": "open"
+    },
+    "7a0f6b73-d5c2-4dc1-a826-0192e57e0f6b": {
+        "id": "7a0f6b73-d5c2-4dc1-a826-0192e57e0f6b",
+        "name": "Nolan",
+        "email": "foundationincnoreply@gmail.com",
+        "created_at": 1763774414,
+        "last_message_at": 1763774427,
+        "status": "open"
+    }
+}

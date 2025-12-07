@@ -1,0 +1,9 @@
+{
+    "admin": {
+        "username": "admin",
+        "password": "$2y$10$0u/R2FlLNTWdIBAmBpJMO.KWZlf3hIoTF41KH9OOaulbhtAf94F2K",
+        "role": "admin",
+        "name": "Nolan Idle",
+        "email": "foundationincnoreply@gmail.com"
+    }
+}

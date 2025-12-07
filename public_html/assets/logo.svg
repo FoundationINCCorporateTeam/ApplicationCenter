@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <style>
+    .logo-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 28px; fill: #1a1a1a; }
+    .logo-accent { fill: #00d4ff; }
+  </style>
+  <g transform="translate(10, 25)">
+    <circle cx="16" cy="0" r="14" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+    <circle cx="16" cy="0" r="6" class="logo-accent"/>
+    <line x1="16" y1="-14" x2="16" y2="-8" stroke="#1a1a1a" stroke-width="2"/>
+    <line x1="16" y1="8" x2="16" y2="14" stroke="#1a1a1a" stroke-width="2"/>
+    <line x1="2" y1="0" x2="8" y2="0" stroke="#1a1a1a" stroke-width="2"/>
+    <line x1="24" y1="0" x2="30" y2="0" stroke="#1a1a1a" stroke-width="2"/>
+  </g>
+  <text x="55" y="33" class="logo-text">PolarisONE</text>
+</svg>

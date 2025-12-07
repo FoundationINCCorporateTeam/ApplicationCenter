@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Application Center — Polaris Pilot</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">🚀 Astroyds — Application Center</div>
+
+        <div style="display:flex; gap:1rem; align-items:center;">
+          <button id="new-app-btn" class="btn btn-secondary">+ New Application</button>
+          <button id="save-app-btn" class="btn btn-primary">💾 Save</button>
+          <div id="theme-toggle" class="theme-toggle" role="button" aria-label="Toggle theme"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="glass-card">
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Applications</h3>
+            <ul id="app-list" class="sidebar-list"></ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Quick Actions</h3>
+            <ul class="sidebar-list">
+              <li class="sidebar-item" onclick="window.location.href='index.php?action=listSubmissions'"><span>📊</span><span>View Submissions</span></li>
+              <li class="sidebar-item" onclick="alert('Coming soon!')"><span>⚙️</span><span>Settings</span></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Builder Area (static markup) -->
+      <main id="builder-area" class="builder-area">
+        <div class="glass-card">
+          <h2>Application Settings</h2>
+
+          <div class="form-group">
+            <label class="form-label">Application Name *</label>
+            <input type="text" id="app-name" class="form-input" placeholder="e.g., Staff Application" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="app-description" class="form-textarea" placeholder="Describe your application..."></textarea>
+          </div>
+
+          <div class="form-row" style="display:flex; gap:0.5rem;">
+            <div style="flex:1;" class="form-group">
+              <label class="form-label">Group ID *</label>
+              <input type="number" id="group-id" class="form-input" placeholder="e.g., 123456" required>
+            </div>
+            <div style="width:260px;" class="form-group">
+              <label class="form-label">Target Role</label>
+              <input type="text" id="target-role" class="form-input" maxlength="6" placeholder="rank id (ex. 255)" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Pass Score (%)</label>
+            <input type="number" id="pass-score" class="form-input" value="70" min="0" max="100" required>
+          </div>
+        </div>
+
+        <div class="glass-card mt-lg">
+          <h2>Styling</h2>
+          <div class="form-row" style="display:flex; gap:0.5rem;">
+            <div style="flex:1;" class="form-group">
+              <label class="form-label">Primary Color</label>
+              <div class="color-field">
+                <input type="color" id="primary-color" class="form-input color-input" value="#ff4b6e" aria-label="Primary color">
+                <span class="color-swatch" id="primary-color-swatch" aria-hidden="true"></span>
+                <input type="text" id="primary-color-hex" class="form-input color-hex-input" value="#ff4b6e" aria-label="Primary color hex">
+              </div>
+            </div>
+            <div style="flex:1;" class="form-group">
+              <label class="form-label">Secondary Color</label>
+              <div class="color-field">
+                <input type="color" id="secondary-color" class="form-input color-input" value="#1f2933" aria-label="Secondary color">
+                <span class="color-swatch" id="secondary-color-swatch" aria-hidden="true"></span>
+                <input type="text" id="secondary-color-hex" class="form-input color-hex-input" value="#1f2933" aria-label="Secondary color hex">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card mt-lg">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <h2 class="mb-0">Questions</h2>
+            <button id="add-question-btn" class="btn btn-primary">+ Add Question</button>
+          </div>
+          <div id="questions-container">
+            <p class="text-muted text-center">No questions yet. Click "Add Question" to get started.</p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Preview Panel -->
+      <aside class="preview-panel">
+        <div class="glass-card">
+          <h3 style="margin-bottom:1rem;">📱 Live Preview</h3>
+          <div class="preview-device">
+            <div class="preview-content" id="preview-content">
+              <p class="text-muted text-center">Preview will appear here</p>
+            </div>
+          </div>
+          <p class="text-muted" style="font-size:0.875rem; margin-top:1rem; text-align:center;">
+            See how your application will look in Roblox
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer style="padding:2rem 0; text-align:center; color:var(--text-muted); border-top:1px solid rgba(15,23,42,0.06); margin-top:3rem;">
+    <div class="container"><p>Astroyds • Polaris Pilot • Built with ❤️</p></div>
+  </footer>
+
+  <!-- Polaris Pilot widget -->
+  <div id="polaris-widget" class="polaris-widget collapsed" aria-hidden="false">
+    <!-- Toggle (always focusable) -->
+    <button id="polaris-toggle-btn" class="polaris-toggle" aria-label="Open Polaris Pilot" aria-expanded="false">Polaris Pilot 🧭</button>
+
+    <!-- Panel -->
+    <div class="polaris-panel" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="polaris-header">
+        <div style="display:flex;gap:.75rem;align-items:center">
+          <div class="polaris-avatar">🧭</div>
+          <div>
+            <div id="polaris-title" class="polaris-title">Polaris Pilot</div>
+            <div class="polaris-sub">AI assistant — generate & import forms</div>
+          </div>
+        </div>
+        <div class="polaris-header-actions">
+          <button id="polaris-minimize-btn" class="icon-btn" title="Minimize">—</button>
+          <button id="polaris-close-btn" class="icon-btn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="polaris-body">
+        <div class="polaris-left">
+          <div class="form-group">
+            <label for="polaris-app-name" class="form-label">App Name</label>
+            <input id="polaris-app-name" class="form-input" placeholder="Moderator Application">
+          </div>
+
+          <div class="form-group">
+            <label for="polaris-app-description" class="form-label">Short Description</label>
+            <textarea id="polaris-app-description" class="form-textarea" placeholder="Describe what the form should assess"></textarea>
+          </div>
+
+          <div style="display:flex;gap:.5rem">
+            <div style="flex:1" class="form-group">
+              <label class="form-label" for="polaris-group-id">Group ID</label>
+              <input id="polaris-group-id" class="form-input" placeholder="123456">
+            </div>
+            <div style="width:120px" class="form-group">
+              <label class="form-label" for="polaris-target-rank">Target Rank</label>
+              <input id="polaris-target-rank" class="form-input" placeholder="124">
+            </div>
+          </div>
+
+          <div style="display:flex;gap:.5rem">
+            <div style="flex:1" class="form-group">
+              <label class="form-label" for="polaris-questions-count">Questions</label>
+              <input id="polaris-questions-count" type="number" class="form-input" value="6" min="1" max="50">
+            </div>
+            <div style="flex:1" class="form-group">
+              <label class="form-label" for="polaris-vibe">Tone</label>
+              <input id="polaris-vibe" class="form-input" value="friendly and professional">
+            </div>
+          </div>
+
+          <div style="display:flex;gap:.5rem">
+            <div style="flex:1" class="form-group">
+              <label class="form-label" for="polaris-primary-color">Primary Color</label>
+              <div class="color-field">
+                <input id="polaris-primary-color" type="color" class="form-input color-input" value="#ff4b6e" aria-label="Polaris primary color">
+                <span class="color-swatch" id="polaris-primary-color-swatch" aria-hidden="true"></span>
+                <input type="text" id="polaris-primary-color-hex" class="form-input color-hex-input" value="#ff4b6e" aria-label="Polaris primary hex">
+              </div>
+            </div>
+            <div style="flex:1" class="form-group">
+              <label class="form-label" for="polaris-secondary-color">Secondary Color</label>
+              <div class="color-field">
+                <input id="polaris-secondary-color" type="color" class="form-input color-input" value="#1f2933" aria-label="Polaris secondary color">
+                <span class="color-swatch" id="polaris-secondary-color-swatch" aria-hidden="true"></span>
+                <input type="text" id="polaris-secondary-color-hex" class="form-input color-hex-input" value="#1f2933" aria-label="Polaris secondary hex">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="polaris-right">
+          <div id="polaris-chat" class="polaris-chat" aria-live="polite" role="log"></div>
+
+          <label for="polaris-prompt" class="sr-only">Message to Polaris Pilot</label>
+          <textarea id="polaris-prompt" class="polaris-input" placeholder="Describe the role, what to test, or paste sample questions..."></textarea>
+
+          <div class="polaris-controls">
+            <button id="polaris-send-prompt" class="btn btn-primary">Send & Generate</button>
+            <button id="polaris-suggest-structure" class="btn btn-secondary">Suggest Structure</button>
+            <button id="polaris-import-btn" class="btn btn-ghost">Import JSON</button>
+          </div>
+
+          <div id="polaris-gen-status" class="polaris-status text-muted">Status: idle</div>
+          <pre id="polaris-gen-preview" class="polaris-preview hidden" aria-hidden="true"></pre>
+          <div id="polaris-gen-controls" class="polaris-gen-controls" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal root (single place for modals) -->
+  <div id="modal-root" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Toast container (created dynamically by JS if not present) -->
+
+  <!-- Scripts (order matters) -->
+  <script src="assets/js/builder.js"></script>
+  <script src="assets/js/builder.ai.js"></script>
+  <script src="assets/js/polaris-toggle.js"></script>
+</body>
+</html>

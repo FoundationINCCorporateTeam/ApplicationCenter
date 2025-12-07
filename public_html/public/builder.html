@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Application Builder — Ultra Modern</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Pragma" content="no-cache">
+  <link rel="stylesheet" href="/public/assets/css/style.css" />
+</head>
+<body class="root">
+  <header class="topbar">
+    <div class="brand">AppCenter Builder</div>
+    <div class="controls">
+      <button id="toggleTheme" class="btn">Toggle Theme</button>
+      <button id="saveBtn" class="btn primary">Save Application</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="palette card">
+      <h3>Question Palette</h3>
+      <div class="palette-items">
+        <div class="palette-item" draggable="true" data-type="multiple_choice">Multiple Choice</div>
+        <div class="palette-item" draggable="true" data-type="short_answer">Short Answer</div>
+        <div class="palette-item" draggable="true" data-type="checkboxes">Checkboxes</div>
+      </div>
+      <hr />
+      <h4>Styling</h4>
+      <label>Primary Color <input id="primaryColor" type="color" value="#0ea5a4"/></label>
+      <label>Accent Color <input id="accentColor" type="color" value="#ff5c7c"/></label>
+      <label>Button Shape
+        <select id="buttonShape">
+          <option value="rounded">Rounded</option>
+          <option value="pill" selected>Pill</option>
+          <option value="square">Square</option>
+        </select>
+      </label>
+      <label>Background
+        <select id="bgStyle">
+          <option value="solid">Solid</option>
+          <option value="gradient" selected>Gradient</option>
+          <option value="image">Image URL</option>
+        </select>
+      </label>
+      <label>Font
+        <select id="fontSelect">
+          <option value="Inter" selected>Inter</option>
+          <option value="Poppins">Poppins</option>
+          <option value="Roboto">Roboto</option>
+        </select>
+      </label>
+    </aside>
+
+    <section class="canvas card" id="formCanvas">
+      <h3>Form Canvas</h3>
+      <div id="questionsList" class="questions-list" ondragover="event.preventDefault()"></div>
+    </section>
+
+    <aside class="preview card">
+      <h3>Live Preview</h3>
+      <div id="preview" class="preview-panel">
+        <!-- Live preview will be rendered here -->
+      </div>
+    </aside>
+  </main>
+
+  <template id="question-template">
+    <div class="question card draggable">
+      <div class="q-header">
+        <input type="text" class="q-title" placeholder="Question text" />
+        <button class="q-delete">Delete</button>
+      </div>
+      <div class="q-body">
+        <textarea class="q-desc" placeholder="Description / hint"></textarea>
+        <label>Type: <span class="q-type"></span></label>
+        <label>Points: <input type="number" class="q-points" value="10" min="0" /></label>
+        <div class="q-options"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="/public/assets/js/builder.js"></script>
+</body>
+</html>

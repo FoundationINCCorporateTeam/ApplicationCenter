@@ -1,0 +1,105 @@
+APP {
+  id: "5aa9082e4dbbef2b056210edceafdf54";
+  name: "Customer Service Agent Application";
+  description: "This is an application for people applying to be customer service agents in Roblox.";
+  group_id: 1234567;
+  target_role: "";
+  pass_score: 70;
+}
+
+STYLE {
+  primary_color: "#4285f4";
+  secondary_color: "#34a853";
+}
+
+QUESTION "q1700000000000" TYPE "multiple_choice" {
+  text: "What's your favorite thing about helping people?";
+  points: 10;
+  options: [
+    {id:"opt0", text:"The feeling of making someone's day!", correct:true},
+    {id:"opt1", text:"Getting paid.", correct:false},
+    {id:"opt2", text:"It's a requirement for this job.", correct:false},
+  ];
+}
+
+QUESTION "q1700001000000" TYPE "short_answer" {
+  text: "Describe a time you had to deal with a difficult situation. How did you handle it?";
+  points: 15;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1700002000000" TYPE "multiple_choice" {
+  text: "Which of these best describes your communication style?";
+  points: 8;
+  options: [
+    {id:"opt0", text:"Clear and concise", correct:true},
+    {id:"opt1", text:"Rambling and enthusiastic", correct:false},
+    {id:"opt2", text:"Short and to the point", correct:false},
+  ];
+}
+
+QUESTION "q1700003000000" TYPE "checkboxes" {
+  text: "Which skills do you think are most important for a Customer Service Agent?";
+  points: 12;
+  options: [
+    {id:"opt0", text:"Patience", correct:true},
+    {id:"opt1", text:"Communication Skills", correct:true},
+    {id:"opt2", text:"Robux Farming", correct:false},
+    {id:"opt3", text:"Speedrunning", correct:false},
+  ];
+  max_score: 12;
+}
+
+QUESTION "q1700004000000" TYPE "short_answer" {
+  text: "Why do you want to be a Customer Service Agent for our group?";
+  points: 18;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1700005000000" TYPE "multiple_choice" {
+  text: "What would you do if a user was being rude?";
+  points: 10;
+  options: [
+    {id:"opt0", text:"Remain calm and professional.", correct:true},
+    {id:"opt1", text:"Yell back at them.", correct:false},
+    {id:"opt2", text:"Ignore them.", correct:false},
+  ];
+}
+
+QUESTION "q1700006000000" TYPE "checkboxes" {
+  text: "Which of the following are important qualities in a team member?";
+  points: 14;
+  options: [
+    {id:"opt0", text:"Reliability", correct:true},
+    {id:"opt1", text:"Positive Attitude", correct:true},
+    {id:"opt2", text:"Constant complaining", correct:false},
+    {id:"opt3", text:"Procrastination", correct:false},
+  ];
+  max_score: 14;
+}
+
+QUESTION "q1700007000000" TYPE "short_answer" {
+  text: "If you could have any superpower to help with customer service, what would it be and why?";
+  points: 20;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1700008000000" TYPE "multiple_choice" {
+  text: "What is your preferred method of communication?";
+  points: 7;
+  options: [
+    {id:"opt0", text:"Written communication", correct:true},
+    {id:"opt1", text:"Telepathy", correct:false},
+    {id:"opt2", text:"Smoke signals", correct:false},
+  ];
+}
+
+QUESTION "q1700009000000" TYPE "short_answer" {
+  text: "Do you have any questions for us?";
+  points: 5;
+  options: [];
+  max_length: 300;
+}

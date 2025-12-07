@@ -1,0 +1,68 @@
+/* Minimal, Tailwind-like utility classes combined with aesthetic styles */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#94a3b8;
+  --accent:#0ea5a4;
+  --text:#e6eef6;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+.app-settings { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+.app-input { width:100%; padding:8px; background:transparent; border:1px dashed rgba(255,255,255,0.04); color:var(--text); border-radius:8px; }
+.app-desc { width:100%; padding:8px; min-height:54px; background:transparent; border:1px dashed rgba(255,255,255,0.03); color:var(--muted); border-radius:8px; }
+
+/* Question edit section */
+.q-edit-section { border-top:1px dashed rgba(255,255,255,0.02); padding-top:10px; margin-top:10px; }
+
+/* Options list */
+.opts-list { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+.opt-row { display:flex; gap:8px; align-items:center; padding:8px; background:rgba(255,255,255,0.02); border-radius:8px; border:1px solid rgba(255,255,255,0.02); }
+.opt-text { flex:1; padding:8px; background:transparent; border:1px dashed rgba(255,255,255,0.03); color:var(--text); border-radius:6px; }
+.opt-correct { margin-left:6px; transform:scale(1.1); }
+.opt-del { background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.03); padding:6px 8px; border-radius:8px; cursor:pointer; }
+
+/* Short-answer controls */
+.opt-maxlength { width:120px; padding:6px; border-radius:8px; background:transparent; border:1px dashed rgba(255,255,255,0.03); color:var(--text); }
+.grading-criteria { width:100%; padding:8px; border-radius:6px; background:transparent; border:1px dashed rgba(255,255,255,0.03); color:var(--muted); }
+
+/* Add option button */
+.add-option-btn { padding:6px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); color:var(--text); background:transparent; cursor:pointer; }
+
+/* Small tweaks for clarity */
+.q-meta label { color:var(--muted); font-size:0.92rem; }
+.opts-hint { color:var(--muted); font-size:0.85rem; }
+
+/* Ensure controls look good on small screens */
+@media (max-width:1000px) {
+  .app-settings { gap:6px; }
+  .opt-row { flex-direction:column; align-items:flex-start; }
+  .opt-del { align-self:flex-end; }
+}
+body{ margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#07121b 0%, #081124 100%); color:var(--text); min-height:100vh; }
+.topbar{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; backdrop-filter: blur(6px); background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow:var(--shadow);}
+.brand{ font-weight:700; font-size:1.1rem; letter-spacing:0.4px; }
+.container{ display:grid; grid-template-columns: 260px 1fr 320px; gap:20px; padding:20px; }
+.card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:16px; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid rgba(255,255,255,0.03);}
+.palette .palette-item{ padding:10px; margin:6px 0; background:var(--glass); border-radius:8px; cursor:grab; }
+.questions-list{ min-height:400px; display:flex; flex-direction:column; gap:12px; }
+.question{ padding:12px; }
+.q-header{ display:flex; gap:8px; align-items:center; }
+.q-title{ flex:1; background:transparent; border: none; border-bottom:1px dashed rgba(255,255,255,0.04); color:var(--text); padding:6px; }
+.q-delete{ background:transparent; border:1px solid rgba(255,255,255,0.03); color:var(--muted); padding:6px 10px; border-radius:8px; cursor:pointer; }
+.q-desc{ width:100%; height:60px; margin-top:8px; background:transparent; border:1px dashed rgba(255,255,255,0.03); color:var(--muted); padding:6px; border-radius:8px; }
+.preview-panel{ min-height:300px; border-radius:8px; padding:12px; background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02)); }
+
+/* Buttons */
+.btn{ padding:8px 14px; border-radius:10px; border: none; background:transparent; color:var(--text); cursor:pointer; margin-left:8px; }
+.btn.primary{ background:var(--accent); color:#052025; font-weight:600; }
+
+/* live preview style (simple) */
+.preview-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:10px; }
+.preview-field{ margin-bottom:12px; }
+
+/* small responsive */
+@media (max-width: 1000px) {
+  .container{ grid-template-columns: 1fr; }
+}

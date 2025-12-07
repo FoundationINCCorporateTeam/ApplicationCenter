@@ -1,0 +1,6 @@
+# Prevent direct web access to data files
+Order deny,allow
+Deny from all
+
+# For modern Apache:
+Require all denied

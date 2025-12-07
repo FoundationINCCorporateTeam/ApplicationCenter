@@ -1,0 +1,134 @@
+# public_html/.htaccess
+# Place this file in your public_html (web root).
+# Purpose: protect sensitive files, redirect root requests into /public/ if present,
+# and route non-file API/front-controller requests into public/index.php
+# (useful when the real front controller is in public_html/public).
+#
+# Notes:
+# - This is for Apache/mod_rewrite environments. If you use nginx, apply equivalent rules
+#   in your nginx server block (I provided nginx snippets earlier).
+# - Keep backups before changing live .htaccess. Test after upload.
+# - Remove or adjust the initial redirect-to-/public rule if you later change nginx root.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  ############################################################
+  # Security: block access to dotfiles, .env and sensitive dirs
+  ############################################################
+
+  # Deny direct access to any "dotfile" (e.g. .env, .git, .htpasswd)
+  RewriteRule "(^|/)\." - [F,L]
+
+  # Prevent serving the sensitive directories if they are under webroot
+  RewriteRule ^(app|private|storage|vendor|config|composer\.(json|lock))($|/) - [F,L]
+
+  # Deny access to specific filenames
+  <FilesMatch "^(?:\.env|composer\.json|composer\.lock|phpunit\.xml)$">
+    Require all denied
+  </FilesMatch>
+
+  ############################################################
+  # Optional: redirect root to /public/ (if your front controller lives in public_html/public)
+  # This keeps browser URLs clean and avoids needing to change many client-side paths.
+  ############################################################
+
+  # Only perform redirect if a "public/index.php" exists
+  RewriteCond %{REQUEST_URI} ^/$
+  RewriteCond %{DOCUMENT_ROOT}/public/index.php -f
+  RewriteRule ^$ /public/ [R=302,L]
+
+  ############################################################
+  # Serve existing files and directories normally
+  ############################################################
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  ############################################################
+  # API / Front controller routing:
+  # - If request path begins with /public/, rewrite missing files to public/index.php
+  # - Otherwise, if public/index.php exists, route non-file requests under / to public/index.php
+  # This allows both /public/... usage and domain-root usage to work.
+  ############################################################
+
+  # If request starts with "public/" and the target file doesn't exist, route to public/index.php
+  RewriteCond %{REQUEST_URI} ^/public/
+  RewriteRule ^public/(.*)$ /public/index.php [L,QSA]
+
+  # If public/index.php exists, route other non-file/dir requests there.
+  RewriteCond %{DOCUMENT_ROOT}/public/index.php -f
+  RewriteRule ^ /public/index.php [L,QSA]
+
+</IfModule>
+
+############################################################
+# Security headers (best-effort; require mod_headers)
+############################################################
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # Basic XSS protection
+  Header always set X-XSS-Protection "1; mode=block"
+  # MIME sniffing protection
+  Header always set X-Content-Type-Options "nosniff"
+  # Basic Referrer-Policy
+  Header always set Referrer-Policy "no-referrer-when-downgrade"
+  # HSTS — only enable if you serve HTTPS for this host
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+  # Basic Content-Security-Policy (adjust as needed)
+  Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' data:; img-src 'self' data: https:; font-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:;"
+</IfModule>
+
+############################################################
+# Caching / static asset hints (adjust TTLs as needed)
+############################################################
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/gif "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 30 days"
+</IfModule>
+
+############################################################
+# Disable directory listings
+############################################################
+Options -Indexes
+
+############################################################
+# Prevent execution of PHP in uploads/uploads-like folders (example)
+# Uncomment and tune if you have an uploads folder under web root:
+# <Directory "/home/NolanI/web/bulletproof.astroyds.com/public_html/uploads">
+#   php_admin_flag engine off
+#   <FilesMatch "\.(php|php5|phtml)$">
+#     Require all denied
+#   </FilesMatch>
+# </Directory>
+############################################################
+# .htaccess for single-page-app routing (Apache)
+# - Serves existing files normally.
+# - Rewrites other requests to index.html so client-side routes work.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # If the request is for an existing file or directory, serve it as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise rewrite to index.html and preserve query string
+  RewriteRule ^ index.html [L,QSA]
+</IfModule>
+
+# Optional helpful headers (uncomment if desired)
+# <IfModule mod_headers.c>
+#   Header set X-Frame-Options "SAMEORIGIN"
+#   Header set X-Content-Type-Options "nosniff"
+#   Header set Referrer-Policy "same-origin"
+# </IfModule>

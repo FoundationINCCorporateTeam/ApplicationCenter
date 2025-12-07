@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rank Centers - Automated rank management with custom promotion paths for Roblox groups.">
+  
+  <title>Rank Centers - PolarisONE</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://polarisone.com"
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://polarisone.com/features"
+    }, {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Rank Centers",
+      "item": "https://polarisone.com/features/rank-centers"
+    }]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></symbol>
+    <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></symbol>
+    <symbol id="icon-twitter" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></symbol>
+    <symbol id="icon-discord" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path></symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></symbol>
+  </svg>
+
+  <header class="masthead" role="banner">
+    <div class="container masthead-inner">
+      <a href="../index.html" class="masthead-logo" aria-label="PolarisONE Home">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="16" r="6" fill="var(--color-accent)"/>
+          <line x1="16" y1="2" x2="16" y2="8" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="24" x2="16" y2="30" stroke="currentColor" stroke-width="2"/>
+          <line x1="2" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="2"/>
+          <line x1="24" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        PolarisONE
+      </a>
+      
+      <nav class="nav-primary" aria-label="Primary navigation">
+        <a href="index.html" aria-current="page">Features</a>
+        <a href="../solutions.html">Solutions</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../enterprise.html">Enterprise</a>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle visual mode">
+          <span class="mode-toggle-option active" data-mode="sleek">Dark</span>
+          <span class="mode-toggle-option" data-mode="vintage">Light</span>
+        </button>
+        <a href="#" class="btn btn-ghost btn-sm">Sign In</a>
+        <button class="btn btn-primary btn-sm" data-modal-trigger="join-modal">Join the Future</button>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false"><svg aria-hidden="true"><use href="#icon-menu"></use></svg></button>
+      </div>
+    </div>
+    
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html">Features</a></li>
+        <li><a href="../solutions.html">Solutions</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="../enterprise.html">Enterprise</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" role="main">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="separator" aria-hidden="true">›</span>
+        <a href="index.html">Features</a>
+        <span class="separator" aria-hidden="true">›</span>
+        <span aria-current="page">Rank Centers</span>
+      </nav>
+    </div>
+
+    <section class="feature-hero">
+      <div class="container">
+        <svg class="feature-hero-icon fade-in" aria-hidden="true"><use href="#icon-zap"></use></svg>
+        <h1 class="feature-detail-title fade-in">Presenting ONERank</h1>
+        <h1 class="feature-hero-title fade-in">Rank Centers</h1>
+        <p class="feature-hero-description fade-in">
+          Streamline your group's rank management with automated promotion systems, custom career paths, and seamless Roblox API integration.
+        </p>
+        <div class="fade-in">
+          <button class="btn btn-primary btn-lg" data-modal-trigger="join-modal">Get Started</button>
+          <a href="#features" class="btn btn-secondary btn-lg">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <div class="feature-detail fade-in">
+          <div class="feature-detail-content">
+            <h2 class="feature-detail-title">Custom Promotion Paths</h2>
+            <p class="feature-detail-text">
+              Design unique career progressions for your group members. Define requirements, milestones, and achievements needed for each rank, and let our system handle the rest automatically.
+            </p>
+            <ul class="feature-list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Visual path builder [Coming Soon]</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Multiple rank tracks (Staff, VIP, etc.) [Coming Soon]</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Time-based requirements</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Activity score thresholds [Coming Soon]</li>
+            </ul>
+          </div>
+          <img 
+            src="https://placehold.co/600x450/1a1a1a/00d4ff?text=Promotion+Paths" 
+            alt="Visual promotion path builder interface"
+            class="feature-detail-image"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
+        </div>
+        <div class="feature-detail reverse fade-in">
+          <div class="feature-detail-content">
+            <h2 class="feature-detail-title">Rank Management</h2>
+            <p class="feature-detail-text">
+              Let users manage, purchase, and change their rank with ease using our rank management portal.
+            </p>
+            <ul class="feature-list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Customizable Rank Store</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Trust Score Verification [Coming Soon]</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Amazing UI</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Rank Abuse Protection [Coming Soon]</li>
+            </ul>
+          </div>
+          <img 
+            src="https://placehold.co/600x450/1a1a1a/00d4ff?text=Rank+Management" 
+            alt="Member activity tracking dashboard"
+            class="feature-detail-image"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
+        </div>
+
+        <div class="feature-detail fade-in">
+          <div class="feature-detail-content">
+            <h2 class="feature-detail-title">Roblox API Integration</h2>
+            <p class="feature-detail-text">
+              Seamlessly connect with Roblox's Group API for instant rank updates. No manual intervention needed—promotions, demotions, and role changes happen automatically.
+            </p>
+            <ul class="feature-list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Instant rank updates</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Bulk operations support</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Rate limit management</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Audit logging</li>
+            </ul>
+          </div>
+          <img 
+            src="https://placehold.co/600x450/1a1a1a/00d4ff?text=API+Integration" 
+            alt="Roblox API integration settings panel"
+            class="feature-detail-image"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
+        </div>
+        <div class="feature-detail reverse fade-in">
+          <div class="feature-detail-content">
+            <h2 class="feature-detail-title">Activity Tracking</h2>
+            <p class="feature-detail-text">
+              Monitor member engagement across all your group activities. Track attendance, participation, and contributions to make data-driven promotion decisions.
+            </p>
+            <ul class="feature-list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Real-time activity monitoring</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Custom activity metrics [Coming Soon]</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Inactivity alerts</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Leaderboards and rankings [Coming Soon]</li>
+            </ul>
+          </div>
+          <img 
+            src="https://placehold.co/600x450/1a1a1a/00d4ff?text=Activity+Tracking" 
+            alt="Member activity tracking dashboard"
+            class="feature-detail-image"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="feature-cta">
+      <div class="container">
+        <h2 id="feature-cta" class="fade-in" style="font-size: var(--text-4xl);">Automate Your Rank Management</h2>
+        <p class="fade-in">Save hours every week with intelligent, automated promotions.</p>
+        <button class="btn btn-primary btn-lg fade-in" data-modal-trigger="join-modal">Start Free Trial</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="footer-logo">PolarisONE</a>
+          <p>AI-powered management platform for Roblox groups, games, and players.</p>
+        </div>
+        <nav aria-label="Product navigation">
+          <h4 class="footer-nav-title">Product</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Features</a></li>
+            <li><a href="../solutions.html">Solutions</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../enterprise.html">Enterprise</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Features navigation">
+          <h4 class="footer-nav-title">Features</h4>
+          <ul class="footer-nav-list">
+            <li><a href="ai-application-centers.html">Application Centers</a></li>
+            <li><a href="rank-centers.html">Rank Centers</a></li>
+            <li><a href="ai-training-centers.html">Training Centers</a></li>
+            <li><a href="ai-customer-support.html">Customer Support</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Company navigation">
+          <h4 class="footer-nav-title">Company</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2025 PolarisONE by Astroyds. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter"><svg aria-hidden="true"><use href="#icon-twitter"></use></svg></a>
+          <a href="#" aria-label="Discord"><svg aria-hidden="true"><use href="#icon-discord"></use></svg></a>
+          <a href="#" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"></use></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" aria-hidden="true"></div>
+  <div id="join-modal" class="modal" role="dialog" aria-labelledby="join-modal-title" aria-modal="true">
+    <button class="modal-close" aria-label="Close modal"><svg aria-hidden="true"><use href="#icon-close"></use></svg></button>
+    <h2 id="join-modal-title" class="modal-title">Join the Future</h2>
+    <div class="modal-content">
+      <p class="mb-4">Enter your email to get early access to PolarisONE.</p>
+      <form action="#" method="post" novalidate>
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Request Access</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

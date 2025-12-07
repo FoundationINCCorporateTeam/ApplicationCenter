@@ -1,0 +1,26 @@
+APP {
+  id: "sample-app";
+  name: "New Application";
+  description: "";
+}
+
+STYLE {
+  primary_color: "#0ea5a4";
+  button_shape: "pill";
+  font: "Inter";
+}
+
+QUESTION "q1763790786283" TYPE "multiple_choice" {
+  text: "Multiple choice question";
+  description: "Testing.";
+  points: 10;
+}
+
+QUESTION "q1763790788711" TYPE "short_answer" {
+  text: "Short answer question";
+  description: "Why do you want to work here?";
+  points: 10;
+  max_length: 200;
+  grading_criteria: "Be concise and relevant.";
+}
+

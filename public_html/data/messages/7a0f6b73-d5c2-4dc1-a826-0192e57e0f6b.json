@@ -1,0 +1,14 @@
+[
+    {
+        "id": "36633160-4e75-43a6-8f81-e407d1b77b14",
+        "sender": "agent",
+        "text": "Hello Nolan, thanks for contacting support!",
+        "timestamp": 1763774415
+    },
+    {
+        "id": "70d00cd4-e819-4aef-b0bb-a5b8a7ecda7d",
+        "sender": "user",
+        "text": "Hi! How are you?",
+        "timestamp": 1763774427
+    }
+]

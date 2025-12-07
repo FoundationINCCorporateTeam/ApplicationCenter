@@ -1,0 +1,66 @@
+APP {
+  id: "ef03e70854fad27c7798b9bc2c13814d";
+  name: "Car Wash Trainee Application";
+  description: "This is an application you need to complete and pass to start your employee training at our Roblox car wash.";
+  group_id: 12345;
+  target_role: "groups/12345/roles/123";
+  pass_score: 70;
+}
+
+STYLE {
+  primary_color: "#4682b4";
+  secondary_color: "#add8e6";
+}
+
+QUESTION "q1700000000000" TYPE "short_answer" {
+  text: "Why are you interested in working at our car wash?";
+  points: 10;
+  max_length: 300;
+  grading_criteria: "Grade based on relevance and quality";
+}
+
+QUESTION "q1700000100000" TYPE "multiple_choice" {
+  text: "What skills do you believe would be most valuable in this role?";
+  points: 15;
+  options: [
+    {id:"opt0", text:"Attention to detail", correct:true},
+    {id:"opt1", text:"Excellent communication skills", correct:false},
+    {id:"opt2", text:"Ability to lift heavy objects", correct:false},
+  ];
+}
+
+QUESTION "q1700000200000" TYPE "checkboxes" {
+  text: "Which of the following qualities do you possess that would benefit our team?";
+  points: 12;
+  options: [
+    {id:"opt0", text:"Reliability", correct:true},
+    {id:"opt1", text:"Teamwork", correct:true},
+    {id:"opt2", text:"Punctuality", correct:true},
+    {id:"opt3", text:"Disorganization", correct:false},
+  ];
+  max_score: 12;
+}
+
+QUESTION "q1700000300000" TYPE "short_answer" {
+  text: "Describe a time you went above and beyond to help someone.";
+  points: 18;
+  options: [];
+  max_length: 300;
+}
+
+QUESTION "q1700000400000" TYPE "multiple_choice" {
+  text: "How would you handle a customer complaint?";
+  points: 20;
+  options: [
+    {id:"opt0", text:"Listen attentively, apologize, and find a solution.", correct:true},
+    {id:"opt1", text:"Ignore the complaint and hope it goes away.", correct:false},
+    {id:"opt2", text:"Argue with the customer until they agree with you.", correct:false},
+  ];
+}
+
+QUESTION "q1700000500000" TYPE "short_answer" {
+  text: "What are your long-term goals, and how does this role fit into them?";
+  points: 14;
+  options: [];
+  max_length: 300;
+}
